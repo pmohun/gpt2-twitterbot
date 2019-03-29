@@ -1,2 +1,2 @@
-worker: python3 gpt_twitterbot.py gpt2-samples.txt
-web: python server.py
+worker: python3 gpt_twitterbot.py
+web: python3 server.py

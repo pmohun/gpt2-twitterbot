@@ -19,8 +19,14 @@ filename=open(argfile,'r')
 f=filename.readlines()
 filename.close()
 sleep = 60 * 60; # 1 hour interval
+i = 1
+while i > 0:
+    new_line = i
+    api .update_status(str(new_line)
+    i + 1
+    time.sleep(sleep)
 
-for line in f:
+'''for line in f:
     if len(line) < 280:
         if len(line) == 1:
             new_line = ''
@@ -45,5 +51,5 @@ for line in f:
         except:
             print('Large line exception.')
             pass
-
+'''
     
