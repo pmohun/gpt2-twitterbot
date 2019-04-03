@@ -1,33 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import tweepy, time, sys
+import tweepy, time, sys, boto3
 from os import environ
-
-##argfile = str(sys.argv[1])
 
 #enter the corresponding information from your Twitter application:
 CONSUMER_KEY = environ['CONSUMER_KEY']
 CONSUMER_SECRET = environ['CONSUMER_SECRET']
 ACCESS_KEY = environ['ACCESS_KEY']
-ACCESS_SECRET = environ['ACCESS_SECRET']'
+ACCESS_SECRET = environ['ACCESS_SECRET']
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-#filename=open(argfile,'r')
-#f=filename.readlines()
-#filename.close()
-sleep = 60 * 60; # 1 hour interval
-i = 1
-while i > 0:
-    new_line = i
-    api .update_status(str(new_line))
-    i += 1
-    time.sleep(sleep)
+import smart_open
 
-'''for line in f:
+filename = smart_open.smart_open('s3://gpt2-samples/gpt2-samples.txt','rb')
+
+f=filename.readlines()
+filename.close()
+sleep = 60 * 60; # 1 hour interval
+
+
+for line in f:
     if len(line) < 280:
         if len(line) == 1:
             new_line = ''
@@ -52,5 +48,4 @@ while i > 0:
         except:
             print('Large line exception.')
             pass
-'''
     
