@@ -17,18 +17,20 @@ api = tweepy.API(auth)
 import smart_open
 
 filename = smart_open.smart_open('s3://gpt2-samples/gpt2-samples.txt','rb')
-
 f=filename.readlines()
 filename.close()
 sleep = 60 * 60; # 1 hour interval
 
 
 for line in f:
+    # check to see if we can post without hitting twitter's character limit
     if len(line) < 280:
+        # ignore lines that consist only of spaces
         if len(line) == 1:
             new_line = ''
             pass
         else:
+        # update the status with the line from the sample text 
             new_line = line
             try: 
                 api.update_status(new_line)
@@ -39,8 +41,11 @@ for line in f:
     else:   
         i = 0
         for i in range(0,280):
-            new_line += line[i]
-            i += 1
+            try:
+                new_line += line[i]
+                i += 1
+            except:
+                print('Int to byte error')
         try:
             api.update_status(new_line)
             num_replies = round(line/280)
