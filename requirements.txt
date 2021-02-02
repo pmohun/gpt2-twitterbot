@@ -11,7 +11,7 @@ autopy==1.1.1
 awscli==1.16.138
 backcall==0.1.0
 beautifulsoup4==4.7.1
-bleach==3.1.0
+bleach==3.3.0
 boto==2.49.0
 boto3==1.9.128
 botocore==1.12.128
