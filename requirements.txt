@@ -109,7 +109,7 @@ PyAutoGUI==0.9.42
 pycares==3.1.0
 pycparser==2.19
 PyGetWindow==0.0.4
-Pygments==2.3.1
+Pygments==2.7.4
 pylint==2.5.2
 PyMsgBox==1.0.6
 pyparsing==2.3.1
